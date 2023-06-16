@@ -2,10 +2,10 @@ package repository
 
 const (
 	// AdminRoleName const for admin role.
-	AdminRoleName string = "admin"
+	AdminRoleName string = "admin" //fraud check
 
 	// ModeratorRoleName const for moderator role.
-	ModeratorRoleName string = "moderator"
+	ModeratorRoleName string = "banker" //banker check
 
 	// UserRoleName const for user role.
 	UserRoleName string = "user"
