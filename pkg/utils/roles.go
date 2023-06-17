@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/eliasdn/Elda-Bank-API/pkg/repository"
-	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -14,7 +13,7 @@ func VerifyRole(role string, c *fiber.Ctx) (string, error) {
 	now := time.Now().Unix()
 
 	// Get claims from JWT.
-	claims, err := utils.ExtractTokenMetadata(c)
+	claims, err := ExtractTokenMetadata(c)
 	if err != nil {
 		// Return status 500 and JWT parse error.
 		return "", c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

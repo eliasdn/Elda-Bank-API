@@ -249,7 +249,7 @@ func UpdateBook(c *fiber.Ctx) error {
 	}
 
 	// Set credential `book:update` from JWT data of current book.
-	credential := claims.Credentials[repository.BookUpdateCredential]
+	credential := claims.Credentials[repository.UserCreateUserCredential]
 
 	// Only book creator with `book:update` credential can update his book.
 	if !credential {
@@ -372,7 +372,7 @@ func DeleteBook(c *fiber.Ctx) error {
 	}
 
 	// Set credential `book:delete` from JWT data of current book.
-	credential := claims.Credentials[repository.BookDeleteCredential]
+	credential := claims.Credentials[repository.UserDisableUserCredential]
 
 	// Only book creator with `book:delete` credential can delete his book.
 	if !credential {
