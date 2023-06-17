@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"

@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/eliasdn/fiberAPI-template/app/models"
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
-	"github.com/eliasdn/fiberAPI-template/platform/cache"
-	"github.com/eliasdn/fiberAPI-template/platform/database"
+	"github.com/eliasdn/Elda-Bank-API/app/models"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/platform/cache"
+	"github.com/eliasdn/Elda-Bank-API/platform/database"
 
 	"github.com/gofiber/fiber/v2"
 )

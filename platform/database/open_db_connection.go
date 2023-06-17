@@ -3,7 +3,7 @@ package database
 import (
 	"os"
 
-	"github.com/eliasdn/fiberAPI-template/app/queries"
+	"github.com/eliasdn/Elda-Bank-API/app/queries"
 	"gorm.io/gorm"
 )
 

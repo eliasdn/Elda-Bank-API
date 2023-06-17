@@ -3,10 +3,10 @@ package controllers
 import (
 	"time"
 
-	"github.com/eliasdn/fiberAPI-template/app/models"
-	"github.com/eliasdn/fiberAPI-template/pkg/repository"
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
-	"github.com/eliasdn/fiberAPI-template/platform/database"
+	"github.com/eliasdn/Elda-Bank-API/app/models"
+	"github.com/eliasdn/Elda-Bank-API/pkg/repository"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/platform/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
@@ -139,7 +139,7 @@ func CreateBook(c *fiber.Ctx) error {
 	}
 
 	// Set credential `book:create` from JWT data of current book.
-	credential := claims.Credentials[repository.BookCreateCredential]
+	credential := claims.Credentials[repository.UserCreateUserCredential]
 
 	// Only user with `book:create` credential can create a new book.
 	if !credential {

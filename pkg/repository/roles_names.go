@@ -4,8 +4,8 @@ const (
 	// AdminRoleName const for admin role.
 	AdminRoleName string = "admin" //fraud check
 
-	// ModeratorRoleName const for moderator role.
-	ModeratorRoleName string = "banker" //banker check
+	// BankerRoleName const for moderator role.
+	BankerRoleName string = "banker" //banker check
 
 	// UserRoleName const for user role.
 	UserRoleName string = "user"

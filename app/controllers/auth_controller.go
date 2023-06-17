@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/eliasdn/fiberAPI-template/app/models"
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
-	"github.com/eliasdn/fiberAPI-template/platform/cache"
-	"github.com/eliasdn/fiberAPI-template/platform/database"
+	"github.com/eliasdn/Elda-Bank-API/app/models"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/platform/cache"
+	"github.com/eliasdn/Elda-Bank-API/platform/database"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
@@ -61,7 +61,7 @@ func UserSignUp(c *fiber.Ctx) error {
 	}
 
 	// Checking role from sign up data.
-	role, err := utils.VerifyRole(signUp.UserRole)
+	role, err := utils.VerifyRole(signUp.UserRole, c)
 	if err != nil {
 		// Return status 400 and error message.
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -76,9 +76,10 @@ func UserSignUp(c *fiber.Ctx) error {
 	// Set initialized default data for user:
 	user.ID = uuid.New()
 	user.CreatedAt = time.Now()
+	user.Username = signUp.Username
 	user.Email = signUp.Email
 	user.PasswordHash = utils.GeneratePassword(signUp.Password)
-	user.UserStatus = 1 // 0 == blocked, 1 == active
+	user.Disabled = false // false == blocked, true == active
 	user.UserRole = role
 
 	// Validate user fields.
@@ -143,8 +144,8 @@ func UserSignIn(c *fiber.Ctx) error {
 		})
 	}
 
-	// Get user by email.
-	foundedUser, err := db.GetUserByEmail(signIn.Email)
+	// Get user by username.
+	foundedUser, err := db.GetUserByUsername(signIn.Username)
 	if err != nil {
 		// Return, if user not found.
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{

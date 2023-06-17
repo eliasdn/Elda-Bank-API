@@ -1,7 +1,7 @@
 package queries
 
 import (
-	"github.com/eliasdn/fiberAPI-template/app/models"
+	"github.com/eliasdn/Elda-Bank-API/app/models"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )

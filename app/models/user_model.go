@@ -14,7 +14,6 @@ type User struct {
 	Username     string    `gorm:"not null" db:"username" json:"username" validate:"required,lte=25"`
 	Email        string    `gorm:"not null" db:"email" json:"email" validate:"required,email,lte=255"`
 	PasswordHash string    `gorm:"not null" db:"password_hash" json:"password_hash" validate:"required,lte=255"`
-	UserStatus   int       `gorm:"not null" db:"user_status" json:"user_status" validate:"required,len=1"`
 	UserRole     string    `gorm:"not null" db:"user_role" json:"user_role" validate:"required,lte=6"`
 	Disabled     bool      `gorm:"notn ull,default:false"`
 }

@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"github.com/eliasdn/fiberAPI-template/app/controllers"
-	"github.com/eliasdn/fiberAPI-template/pkg/middleware"
+	"github.com/eliasdn/Elda-Bank-API/app/controllers"
+	"github.com/eliasdn/Elda-Bank-API/pkg/middleware"
 	"github.com/gofiber/fiber/v2"
 )
 

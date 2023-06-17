@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

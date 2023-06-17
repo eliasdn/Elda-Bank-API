@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	"github.com/eliasdn/fiberAPI-template/pkg/repository"
+	"github.com/eliasdn/Elda-Bank-API/pkg/repository"
 )
 
 // GetCredentialsByRole func for getting credentials from a role name.
@@ -16,20 +16,25 @@ func GetCredentialsByRole(role string) ([]string, error) {
 	case repository.AdminRoleName:
 		// Admin credentials (all access).
 		credentials = []string{
-			repository.BookCreateCredential,
-			repository.BookUpdateCredential,
-			repository.BookDeleteCredential,
+			repository.UserCreateUserCredential,
+			repository.UserCreateBankerCredential,
+
+			repository.UserUpdateUserCredential,
+			repository.UserUpdatebankerCredential,
+
+			repository.UserDisableUserCredential,
+			repository.UserDisablebnakerCredential,
 		}
-	case repository.ModeratorRoleName:
+	case repository.BankerRoleName:
 		// Moderator credentials (only book creation and update).
 		credentials = []string{
-			repository.BookCreateCredential,
-			repository.BookUpdateCredential,
+			repository.UserCreateUserCredential,
+			repository.UserUpdateUserCredential,
 		}
 	case repository.UserRoleName:
 		// Simple user credentials (only book creation).
 		credentials = []string{
-			repository.BookCreateCredential,
+			//repository.UserCreateUserCredential,
 		}
 	default:
 		// Return error message.

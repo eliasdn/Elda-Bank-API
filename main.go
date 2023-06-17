@@ -3,14 +3,14 @@ package main
 import (
 	"os"
 
-	"github.com/eliasdn/fiberAPI-template/pkg/configs"
-	"github.com/eliasdn/fiberAPI-template/pkg/middleware"
-	"github.com/eliasdn/fiberAPI-template/pkg/routes"
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/pkg/configs"
+	"github.com/eliasdn/Elda-Bank-API/pkg/middleware"
+	"github.com/eliasdn/Elda-Bank-API/pkg/routes"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 
 	"github.com/gofiber/fiber/v2"
 
-	_ "github.com/eliasdn/fiberAPI-template/docs" // load API Docs files (Swagger)
+	_ "github.com/eliasdn/Elda-Bank-API/docs" // load API Docs files (Swagger)
 
 	_ "github.com/joho/godotenv/autoload" // load .env file automatically
 )

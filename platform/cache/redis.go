@@ -4,7 +4,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/eliasdn/fiberAPI-template/pkg/utils"
+	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 
 	"github.com/go-redis/redis/v8"
 )
