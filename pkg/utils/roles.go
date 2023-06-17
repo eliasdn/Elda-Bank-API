@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// VerifyRole func for verifying a given role.
 func VerifyRole(role string, c *fiber.Ctx) (string, error) {
 	now := time.Now().Unix()
 
