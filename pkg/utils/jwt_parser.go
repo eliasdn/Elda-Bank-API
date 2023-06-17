@@ -12,6 +12,7 @@ import (
 // TokenMetadata struct to describe metadata in JWT.
 type TokenMetadata struct {
 	UserID      uuid.UUID
+	Role        string
 	Credentials map[string]bool
 	Expires     int64
 }
@@ -32,18 +33,23 @@ func ExtractTokenMetadata(c *fiber.Ctx) (*TokenMetadata, error) {
 			return nil, err
 		}
 
+		role := string(claims["role"].(string))
 		// Expires time.
 		expires := int64(claims["expires"].(float64))
 
 		// User credentials.
 		credentials := map[string]bool{
-			"book:create": claims["book:create"].(bool),
-			"book:update": claims["book:update"].(bool),
-			"book:delete": claims["book:delete"].(bool),
+			"User:create_user":    claims["User:create_user"].(bool),
+			"User:create_banker":  claims["User:create_banker"].(bool),
+			"User:update_user":    claims["User:update_user"].(bool),
+			"User:update_banker":  claims["User:update_banker"].(bool),
+			"User:disable_user":   claims["User:disable_user"].(bool),
+			"User:Disable_banker": claims["User:create_user"].(bool),
 		}
 
 		return &TokenMetadata{
 			UserID:      userID,
+			Role:        role,
 			Credentials: credentials,
 			Expires:     expires,
 		}, nil
