@@ -19,9 +19,9 @@ type Tokens struct {
 }
 
 // GenerateNewTokens func for generate a new Access & Refresh tokens.
-func GenerateNewTokens(id string, credentials []string) (*Tokens, error) {
+func GenerateNewTokens(id string, role string, credentials []string) (*Tokens, error) {
 	// Generate JWT Access token.
-	accessToken, err := generateNewAccessToken(id, credentials)
+	accessToken, err := generateNewAccessToken(id, role, credentials)
 	if err != nil {
 		// Return token generation error.
 		return nil, err
@@ -40,7 +40,7 @@ func GenerateNewTokens(id string, credentials []string) (*Tokens, error) {
 	}, nil
 }
 
-func generateNewAccessToken(id string, credentials []string) (string, error) {
+func generateNewAccessToken(id string, role string, credentials []string) (string, error) {
 	// Set secret key from .env file.
 	secret := os.Getenv("JWT_SECRET_KEY")
 
@@ -53,9 +53,7 @@ func generateNewAccessToken(id string, credentials []string) (string, error) {
 	// Set public claims:
 	claims["id"] = id
 	claims["expires"] = time.Now().Add(time.Minute * time.Duration(minutesCount)).Unix()
-	claims["book:create"] = false
-	claims["book:update"] = false
-	claims["book:delete"] = false
+	claims["role"] = role
 
 	// Set private token credentials:
 	for _, credential := range credentials {

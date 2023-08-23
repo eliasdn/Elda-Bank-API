@@ -25,6 +25,7 @@ func TestPrivateRoutes(t *testing.T) {
 	// Create token with `book:delete` credential.
 	tokenOnlyDelete, err := utils.GenerateNewTokens(
 		uuid.NewString(),
+		"admin",
 		[]string{"book:delete"},
 	)
 	if err != nil {
@@ -34,6 +35,7 @@ func TestPrivateRoutes(t *testing.T) {
 	// Create token without any credentials.
 	tokenNoAccess, err := utils.GenerateNewTokens(
 		uuid.NewString(),
+		"user",
 		[]string{},
 	)
 	if err != nil {
