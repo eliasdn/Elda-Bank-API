@@ -2,9 +2,7 @@ package database
 
 import (
 	"log"
-
 	"github.com/eliasdn/Elda-Bank-API/app/models"
-	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
 )
 
 func CheckDB() error {
