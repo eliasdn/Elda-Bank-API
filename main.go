@@ -1,17 +1,17 @@
 package main
 
 import (
+	"log"
 	"os"
 
+	_ "github.com/eliasdn/Elda-Bank-API/docs" // load API Docs files (Swagger)
 	"github.com/eliasdn/Elda-Bank-API/pkg/configs"
 	"github.com/eliasdn/Elda-Bank-API/pkg/middleware"
 	"github.com/eliasdn/Elda-Bank-API/pkg/routes"
 	"github.com/eliasdn/Elda-Bank-API/pkg/utils"
-
 	"github.com/gofiber/fiber/v2"
 
-	_ "github.com/eliasdn/Elda-Bank-API/docs" // load API Docs files (Swagger)
-
+	"github.com/eliasdn/Elda-Bank-API/platform/database"
 	_ "github.com/joho/godotenv/autoload" // load .env file automatically
 )
 
@@ -28,6 +28,11 @@ import (
 // @in header
 // @name Authorization
 func main() {
+	err := database.CheckDB()
+	if err != nil {
+		log.Print(err)
+		os.Exit(0)
+	}
 	// Define Fiber config.
 	config := configs.FiberConfig()
 

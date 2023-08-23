@@ -1,0 +1,13 @@
+account number:
+    format:
+        00 00 00 00 00
+        1  2  3  4  5
+
+    1: numéro du pays, correspondant à la list de pays de la base de données (exemple: 01 - France, 02 - Belgique...)
+    2: type de compte (exemple: 01 - checking, 02 saving...)
+    3: nombre de 12 chiffres aléatoire (exemple: 119845465498, 7895678451984)
+
+    exemple:
+        compte de type checking, compte bancaire français :
+            0101119845465498
+        

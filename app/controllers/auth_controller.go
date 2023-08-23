@@ -61,12 +61,22 @@ func UserSignUp(c *fiber.Ctx) error {
 	}
 
 	// Checking role from sign up data.
-	role, err := utils.VerifyRole(signUp.UserRole, c)
+	role := signUp.UserRole
+	verifRole, err := utils.VerifyRole(role, c)
 	if err != nil {
 		// Return status 400 and error message.
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
 			"msg":   err.Error(),
+			"test":  "if err!=nil",
+		})
+	}
+
+	if verifRole != "admin" && verifRole != "banker" && verifRole != "user" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": true,
+			"msg":   "No token found",
+			"role":  role,
 		})
 	}
 
@@ -88,6 +98,7 @@ func UserSignUp(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
 			"msg":   utils.ValidatorErrors(err),
+			"test":  "test",
 		})
 	}
 
@@ -150,7 +161,7 @@ func UserSignIn(c *fiber.Ctx) error {
 		// Return, if user not found.
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
 			"error": true,
-			"msg":   "user with the given email is not found",
+			"msg":   "user with the given username isn't found",
 		})
 	}
 
@@ -160,7 +171,7 @@ func UserSignIn(c *fiber.Ctx) error {
 		// Return, if password is not compare to stored in database.
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
-			"msg":   "wrong user email address or password",
+			"msg":   "wrong password",
 		})
 	}
 
@@ -175,7 +186,7 @@ func UserSignIn(c *fiber.Ctx) error {
 	}
 
 	// Generate a new pair of access and refresh tokens.
-	tokens, err := utils.GenerateNewTokens(foundedUser.ID.String(), credentials)
+	tokens, err := utils.GenerateNewTokens(foundedUser.ID.String(), foundedUser.UserRole, credentials)
 	if err != nil {
 		// Return status 500 and token generation error.
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
