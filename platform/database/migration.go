@@ -18,6 +18,7 @@ func CheckDB() error {
 		}
 	}
 
+<<<<<<< Updated upstream
 	if !db.Migrator().HasTable(&models.Account{}) {
 		err := db.Migrator().AutoMigrate(&models.Account{})
 		if err != nil {
@@ -34,5 +35,18 @@ func CheckDB() error {
 		}
 	}
 
+=======
+	if !db.Migrator().HasTable(&models.User{}) {
+		db.Migrator().CreateTable(&models.User{})
+	}
+
+	if !db.Migrator().HasTable(&models.Account{}) {
+		db.Migrator().CreateTable(&models.Account{})
+	}
+
+	if !db.Migrator().HasTable(&models.Customer{}) {
+		db.Migrator().CreateTable(&models.Customer{})
+	}
+>>>>>>> Stashed changes
 	return nil
 }
