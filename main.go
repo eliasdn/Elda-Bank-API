@@ -28,11 +28,15 @@ import (
 // @in header
 // @name Authorization
 func main() {
+<<<<<<< Updated upstream
 	err := database.CheckDB()
 	if err != nil {
 		log.Print(err)
 		os.Exit(0)
 	}
+=======
+	checkDB() // DB
+>>>>>>> Stashed changes
 	// Define Fiber config.
 	config := configs.FiberConfig()
 
