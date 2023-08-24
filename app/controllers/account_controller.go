@@ -179,7 +179,11 @@ func CreateAccount(c *fiber.Ctx) error {
 	account.ID = uuid.New()
 	account.CreatedAt = time.Now()
 	account.UserID = claims.UserID
+<<<<<<< Updated upstream
 	account.AccountStatus = 1 // 0 == draft, 1 == active
+=======
+	account.Disabled = true // 0 == draft, 1 == active
+>>>>>>> Stashed changes
 
 	// Validate account fields.
 	if err := validate.Struct(account); err != nil {
